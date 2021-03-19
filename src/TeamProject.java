@@ -54,10 +54,11 @@ public class TeamProject {
                 System.out.println(Arrays.toString(newDoc));
 
             } else {
-
+                System.out.println("등록 된 번호가 없습니다");
+                System.out.print(">> ");
             }
         } else if (indexNum == 7) {
-
+            System.out.println("프로그램을 종료 합니다");
         }
     }
 }
