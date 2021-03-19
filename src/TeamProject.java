@@ -36,12 +36,15 @@ public class TeamProject {
                 temp[temp.length - 1] = newDocContent;
                 newDoc = temp;
                 temp = null;
+                // 배열 입력 확인 기능 (추후에 삭제 요망)
                 System.out.println(Arrays.toString(newDoc));
             }
         } else if (indexNum == 6) {
+            // 작성글 검색 기능
             System.out.println("검색 할 글의 번호를 입력하세요");
             System.out.print(">> ");
             String indexSearchNum = sc.next();
+            // 번호 매칭 기능
             boolean searchContent = false;
             int i = 0;
             for (i = 0; i < newDoc.length; i++) {
@@ -50,14 +53,15 @@ public class TeamProject {
                     break;
                 }
             }
+            //검색 된 계시글 화면 표현
             if (searchContent) {
                 System.out.println(Arrays.toString(newDoc));
-
             } else {
                 System.out.println("등록 된 번호가 없습니다");
                 System.out.print(">> ");
             }
         } else if (indexNum == 7) {
+            //프로그램 종료 기능
             System.out.println("프로그램을 종료 합니다");
         }
     }
