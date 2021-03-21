@@ -107,14 +107,12 @@ public class total {
                                                     case 1: // 아이디 변경
                                                         while (true) {
                                                             String changeId = sc.next();
-                                                            String[][] vTemp = new String[memberList.length - 1][idIngredient];
-                                                            for (int i = modifySearchId; i < memberList.length - 1; i++) {
-                                                                memberList[i] = memberList[i + 1];
+                                                            String[][] vTemp = new String[memberList.length - 1][idIngredient]; //  멤버리스트중에 선택된 Id 를 삭제해서 담을 배열
+                                                            for (int i = modifySearchId; i < vTemp.length; i++) { // 본인을 중복으로 인식하지 않기 위해
+                                                                                                                    // 선택된 Id 부터 반복해서 선택된 Id 를 배열에서 제거
+                                                                vTemp[i] = memberList[i + 1];
                                                             }
-                                                            for (int i = 0; i < vTemp.length; i++) {
-                                                                vTemp[i] = memberList[i];
-                                                            }
-                                                            int reduplication = 0;
+                                                            int reduplication;
                                                             for (reduplication = 1; reduplication < vTemp.length; reduplication++) { // 본인을 제외한 아이디가 중복되는지 확인
                                                                 if (changeId.equals(vTemp[reduplication][1])) {
                                                                     break;
@@ -128,8 +126,8 @@ public class total {
                                                                 System.out.print("변경완료!\n");
                                                                 break;
                                                             }
+                                                            vTemp = null;
                                                         }
-
                                                         break;
 
                                                     case 2:
