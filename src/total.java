@@ -35,7 +35,7 @@ public class total {
             String password = sc.next(); //비밀번호 받기
             boolean idCheck = false; // 아이디 유무
             boolean pwCheck = false; // 비번 유무
-            int memberNumber = 0; // 0은 null로 취급   멤버 아이디를 가져오기 위함
+            int memberNumber = 0; //   멤버 아이디를 가져오기 위함
             int idIngredient = 4; // 멤버리스트의 성분 수  나중에 성분을 추가하게될경우 이 부분및 배열만 수정하면된다
             int noticeIngredient = 3; //공지사항의 성분 수
             for (int i = 1; i < memberList.length; i++) { //멤버 전체를 검토하여 id 확인
@@ -54,8 +54,8 @@ public class total {
             if (idCheck && pwCheck && memberNumber == 1) { // 관리자 계정 분리  memberNumber 1 은 관리자 계정이다
                 System.out.println("++ 관리자 계정 입니다 ++");
                 //관리자 계정기능 넣기
-                boolean after = true; //이전으로 가기위한 논리값
-                while (after) { // 내부에 while 문이 있어서 이전으로 돌아가는 값으로 사용가능
+                boolean after = true; // 로그아웃을 담당하기위한 논리값
+                while (after) {
                     System.out.println("========================");
                     System.out.println("+++++ 계시판 관리 +++++");
                     System.out.println("========================");
@@ -343,7 +343,7 @@ public class total {
                                                                 }
                                                             }
                                                             if (reduplication < nTemp.length) {
-                                                                System.out.println("아이디가 중복됩니다");
+                                                                System.out.println("공지번호가 중복됩니다");
                                                                 System.out.print("다시 입력해 주세요 > ");
                                                             } else if (reduplication == nTemp.length) {
                                                                 notice[modifySearchNoticeNum][category_modify - 1] = changeNoticeNum; //입력 받은 카테고리값 변경
@@ -362,8 +362,8 @@ public class total {
                                                 }
 
                                                 break;
-                                            } else { // id가 없는경우
-                                                System.out.println("등록되지 않은 아이디 입니다");
+                                            } else { // 공지번호가 없는경우
+                                                System.out.println("등록되지 않은 번호 입니다");
                                             }
                                         }
                                         break; // 1번 브레이크
