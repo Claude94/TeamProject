@@ -67,7 +67,6 @@ public class Board {
                                     ,boardArr[i][0],boardArr[i][1],boardArr[i][2],boardArr[i][3]);
                         }
                     }
-
                     break;
                 case 3:
                     // 3. 게시판 글 수정
