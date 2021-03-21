@@ -95,11 +95,11 @@ public class Board {
                                     board = new String[4];
                                     board[0] = boardArr[i][0];
                                     System.out.println("===== "+board[0]+"번 게시물 =====");
-                                    System.out.println("수정 작성자 >> ");
+                                    System.out.print("수정 작성자 >> ");
                                     board[1] = sc.next();
-                                    System.out.println("수정 제목 >> ");
+                                    System.out.print("수정 제목 >> ");
                                     board[2] = sc.next();
-                                    System.out.println("수정 내용 >> ");
+                                    System.out.print("수정 내용 >> ");
                                     board[3] = sc.next();
 
                                     boardArr[i] = board;
@@ -110,13 +110,11 @@ public class Board {
                                     System.out.println("수정이 취소되었습니다.");
                                 }
                                 break;
-
                             }
                         }
                         if(!check){
                             System.out.println("게시글 번호를 다시 확인해주세요.");
                         }
-
                     }
 
                     break;
@@ -141,15 +139,15 @@ public class Board {
                                 String deleteMenu = sc.next();
                                 if(deleteMenu.equals("Y")){
                                     // 삭제 게시물 배열에서 삭제
-                                    for (int j = i; j < boardArr.length-1; j++) {
-                                        boardArr[i] = boardArr[i+1];
+                                    for (int b = 0; b< boardArr.length-1; b++) {
+                                        boardArr[b] = boardArr[b+1];
                                     }
                                     String[][] temp = new String[boardArr.length-1][];
-                                    for (int j = 0; j < temp.length; j++) {
+                                    for (int j= 0; j < temp.length; j++) {
                                         temp[i] = boardArr[i];
                                     }
-                                    boardArr = temp;
-                                    temp = null;
+                                    boardArr[i] = temp[i];
+                                    temp[i] = null;
 //                                    System.out.println(Arrays.deepToString(boardArr));
 
                                     // 총 게시물 수 감소
