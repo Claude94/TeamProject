@@ -18,6 +18,7 @@ public class MemberList {
                 {"2", "테스팅", "테스트용 공지 입니다"} //[2][]
 
         };
+
         System.out.println("=== 동원 계시판 로그인! ===");
         System.out.print("=== 아이디: ");
         String id = sc.next();  //id 받기
@@ -45,6 +46,7 @@ public class MemberList {
             System.out.println("=== 로그인 성공! ===");
             System.out.printf("=== %s님 어서오세요! ===\n", memberList[memberNumber][1]);
             //사용자 계정 넣기
+
             if (idCheck == true && pwCheck == true && memberNumber == 1) {
                 System.out.println("=== 이 계정은 관리자 입니다 ===");
                 //관리자 계정기능 넣기
@@ -261,7 +263,7 @@ public class MemberList {
                                 }
                             }
                             break;
-                        case 2:
+                        case 2: //공지사항
                             previous2:
                             while (true) {
                                 System.out.println("");
@@ -338,10 +340,10 @@ public class MemberList {
                                                                 }
                                                             }
                                                             if (reduplication < nTemp.length) {
-                                                                System.out.println("아이디가 중복됩니다");
+                                                                System.out.println("공지번호가 중복됩니다");
                                                                 System.out.print("다시 입력해 주세요 > ");
                                                             } else if (reduplication == nTemp.length) {
-                                                                notice[modifySearchNoticeNum][category_modify-1] = changeNoticeNum; //입력 받은 카테고리값 변경
+                                                                notice[modifySearchNoticeNum][category_modify - 1] = changeNoticeNum; //입력 받은 카테고리값 변경
                                                                 System.out.print("변경완료!\n");
                                                                 break;
                                                             }
@@ -351,21 +353,47 @@ public class MemberList {
 
                                                     case 2:
                                                     case 3:
-                                                        notice[modifySearchNoticeNum][category_modify-1] = sc.next(); //입력 받은 카테고리값 변경
+                                                        notice[modifySearchNoticeNum][category_modify - 1] = sc.next(); //입력 받은 카테고리값 변경
                                                         System.out.print("변경완료!\n");
                                                         break;
                                                 }
 
                                                 break;
                                             } else { // id가 없는경우
-                                                System.out.println("등록되지 않은 아이디 입니다");
+                                                System.out.println("등록되지 않은 공지 입니다");
                                             }
                                         }
                                         break; // 1번 브레이크
                                     case 3:
                                         //공지 삭제
                                         //삭제 알고리즘 가져와서 사용하면 될듯함
-                                        System.out.println("4");
+                                        while (true) {
+                                            System.out.print("제거할 공지번호를 입력하세요! > ");
+                                            String delNotice = sc.next();
+                                            boolean delContainINotice = false;
+                                            int delSearchNoticeNum;
+                                            for (delSearchNoticeNum = 1; delSearchNoticeNum < notice.length; delSearchNoticeNum++) { // 선택한 ID가 있는지 확인
+                                                if (delNotice.equals(notice[delSearchNoticeNum][0])) {
+                                                    delContainINotice = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (delContainINotice) { // 공지가 존재하면 실행
+                                                String[][] temp = new String[notice.length - 1][noticeIngredient];
+                                                System.out.printf("공지글[ %s ]를(을) 제거했습니다\n\n", notice[delSearchNoticeNum][2]);
+                                                for (int j = delSearchNoticeNum; j < notice.length - 1; j++) {
+                                                    notice[j] = notice[j + 1];
+                                                }
+                                                for (int k = 0; k < temp.length; k++) {
+                                                    temp[k] = notice[k];
+                                                }
+                                                notice = temp;
+                                                temp = null;
+                                                break;
+                                            } else { // 공지글이 존재하지 않음
+                                                System.out.println("찾는 공지글이 없습니다");
+                                            }
+                                        }
                                         break;
                                     case 8:
                                         System.out.println("");
@@ -379,10 +407,10 @@ public class MemberList {
                             }
                     }
                 }
-            } else {
-                System.out.println("=== 로그인 실패 ===");
-                System.out.println("=== 아이디 / 비밀번호를 확인해주세요 ===");
             }
+            }else {
+            System.out.println("=== 로그인 실패 ===");
+            System.out.println("=== 아이디 / 비밀번호를 확인해주세요 ===");
         }
     }
 }
