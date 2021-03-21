@@ -176,7 +176,6 @@ public class Board {
                             System.out.println(deleteIdx+"존재하지 않는 글 번호입니다.");
                         }
                     }
-
                     break;
                 case 5:
                     // 4. 게시판 글 검색
