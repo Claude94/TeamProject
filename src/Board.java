@@ -153,7 +153,6 @@ public class Board {
                                     // 총 게시물 수 감소
                                     boardCount--;
 
-//                                    System.out.println(boardCount);
                                     System.out.println("삭제 완료되었습니다.");
 
                                     for (int k = 0; k < boardCount; k++) {
