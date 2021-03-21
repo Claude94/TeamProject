@@ -54,7 +54,6 @@ public class Board {
                     System.out.printf("%s님의 게시판 글이 정상 등록되었습니다.\n",userName);
 //                    System.out.println(Arrays.toString(board));
                     break;
-
                 case 2:
                     // 2. 게시판 글 전체 보기
                     System.out.println("전체 게시판 글 보기입니다.");
@@ -125,48 +124,58 @@ public class Board {
                         String deleteIdx = sc.next();
                         System.out.print(">> ");
 
-                        for (int i = 0; i < boardCount; i++) {
-                            if(boardArr[i][0].equals(deleteIdx)){
-                                // 삭제할 글 번호가 입력한 번호와 일치할 때
-                                System.out.printf("글 번호 : %s | 작성자 : %s | 제목 : %s | 내용 : %s \n"
-                                        ,boardArr[i][0],boardArr[i][1],boardArr[i][2],boardArr[i][3]);
-                                System.out.println("해당 게시물을 정말로 삭제하시겠습니까? Y/N ");
-                                System.out.print(">> ");
-
-                                String deleteMenu = sc.next();
-                                if(deleteMenu.equals("Y")){
-                                    // 삭제 게시물 배열에서 삭제
-                                    for (int b = 0; b < boardArr.length-1; b++) {
-                                        boardArr[b] = boardArr[b+1];
-                                    }
-
-                                    String[][] temp = new String[boardArr.length-1][];
-
-                                    for (int j= 0; j < temp.length; j++) {
-                                        temp[i] = boardArr[i];
-                                    }
-                                    boardArr[i] = temp[i];
-                                    temp[i] = null;
-//                                    System.out.println(Arrays.deepToString(boardArr));
-
-                                    // 총 게시물 수 감소
-                                    boardCount--;
-
-                                    System.out.println("삭제 완료되었습니다.");
-
-                                    for (int k = 0; k < boardCount; k++) {
-                                        System.out.printf("글 번호 : %s | 작성자 : %s | 제목 : %s | 내용 : %s \n"
-                                                ,boardArr[k][0],boardArr[k][1],boardArr[k][2],boardArr[k][3]);
-
-                                    }
-                                }else{
-                                    System.out.println("삭제가 취소되었습니다.");
-                                }
+                        boolean check = false;
+                        int idx;
+                        for(idx =0; idx < boardCount; idx++){
+                            if(deleteIdx.equals(boardArr[idx][0])){
+                                check = true;
                                 break;
                             }
                         }
-                    }
+                        if(check) {
+                            for (int i = 0; i < boardCount; i++) {
+                                if (boardArr[i][0].equals(deleteIdx)) {
+                                    // 삭제할 글 번호가 입력한 번호와 일치할 때
+                                    System.out.printf("글 번호 : %s | 작성자 : %s | 제목 : %s | 내용 : %s \n"
+                                            , boardArr[i][0], boardArr[i][1], boardArr[i][2], boardArr[i][3]);
+                                    System.out.println("해당 게시물을 정말로 삭제하시겠습니까? Y/N ");
+                                    System.out.print(">> ");
 
+                                    String deleteMenu = sc.next();
+                                    if (deleteMenu.equals("Y")) {
+                                        // 삭제 게시물 배열에서 삭제
+                                        for (int j = idx; j < boardArr.length - 1; j++) {
+                                            boardArr[j] = boardArr[j + 1];
+                                        }
+
+                                        String[][] temp = new String[boardArr.length - 1][];
+
+                                        for (int k = 0; k < temp.length; k++) {
+                                            temp[k] = boardArr[k];
+                                        }
+                                        boardArr[i] = temp[i];
+                                        temp[i] = null;
+
+                                        // 총 게시물 수 감소
+                                        boardCount--;
+
+                                        System.out.println("삭제 완료되었습니다.");
+
+                                        for (int k = 0; k < boardCount; k++) {
+                                            System.out.printf("글 번호 : %s | 작성자 : %s | 제목 : %s | 내용 : %s \n"
+                                                    , boardArr[k][0], boardArr[k][1], boardArr[k][2], boardArr[k][3]);
+
+                                        }
+                                    } else {
+                                        System.out.println("삭제가 취소되었습니다.");
+                                    }
+                                    break;
+                                }
+                            }
+                        }else{
+                            System.out.println(deleteIdx+"존재하지 않는 글 번호입니다.");
+                        }
+                    }
                     break;
                 case 5:
                     // 4. 게시판 글 검색
