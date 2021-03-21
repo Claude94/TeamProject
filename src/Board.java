@@ -160,15 +160,12 @@ public class Board {
                                                 ,boardArr[k][0],boardArr[k][1],boardArr[k][2],boardArr[k][3]);
 
                                     }
-
                                 }else{
                                     System.out.println("삭제가 취소되었습니다.");
                                 }
                                 break;
                             }
-
                         }
-
                     }
 
                     break;
